@@ -1,0 +1,19 @@
+{
+   "name": "EMRgency",
+   "description": "server for EMRgency, with teammates Connor Chong, Ruth Lee, Hiyori Yoshida, Carsen Coggeshall, Desmond Johnson, Chris Lin, and Mark Choi",
+   "version": "0.0.1",
+   "scripts": {
+      "start": "node app.js"
+   },
+   "dependencies": {
+      "async": "^2.6.0",
+      "bootstrap": "^4.0.0-alpha.6",
+      "crypto-js": "^3.1.9-1",
+      "ejs": "^2.5.7",
+      "express": "^3.3.8",
+      "express-session": "^1.7.6",
+      "jquery": "^3.3.1",
+      "lru-cache": "^4.1.1",
+      "mongoose": "^5.0.2"
+   }
+}

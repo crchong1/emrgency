@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .nav {
+          background-color:rgba(0,0,0,0.2) !important;
+          border-color: transparent !important;
+          background-image:none !important;
+          color:white !important;
+        }
+        .nav .btn {
+            background-color: rgba(255, 255, 255, 0) !important;
+            color: rgb(255, 255, 255);
+            border-color: rgba(255, 255, 255, 0.205)!important;
+        }
+        .nav li{
+          padding-left:10px;
+          padding-right:5px;
+        }
+        .nav a{
+          color:white !important;
+        }
+        .nav input{
+          background-color: rgba(255, 255, 255, 0.171);
+          border-color: transparent !important;
+        }
+        .nav ::placeholder {
+          color:white !important;
+        }
+        .jumbo {
+            color: rgba(255, 255, 255, 0.521);
+            background-color: rgba(255, 0, 0, 0.507) !important;
+            height: 100vh;
+        }
+
+        .jumbo h1 {
+            font-size: 7em !important;
+        }
+
+        .jumbo h2 {
+            font-size: 7em !important;
+            font-family: Nunito, sans-serif;
+            padding-bottom: 35px;
+            padding-top: 60px;
+        }
+
+        .jumbo p {
+            font-size: 2em !important;
+        }
+
+        .jumbotron {
+            margin-bottom: 0rem !important;
+        }
+
+        .jumbotron h1 {
+            padding-top: 40px;
+        }
+
+        .jumbo1 {
+            padding-top: 0rem;
+            color: rgba(255, 255, 255, 0.521);
+            background-color: rgb(19, 219, 182) !important;
+            height: 100vh;
+        }
+        .jumbo1 h2 {
+            padding-top: 10px;
+        }
+
+        .jumbo2 {
+            padding-top: 0rem;
+            color: rgba(255, 255, 255, 0.521);
+            background-color: rgba(0, 89, 255, 0.521) !important;
+            height: 100vh;
+        }
+
+        .jumbo2 h1 {
+            padding-bottom: 15px;
+        }
+
+        .jumbo3 {
+            padding-top: 0rem;
+            color: rgba(255, 255, 255, 0.521);
+            background-color: rgba(118, 45, 255, 0.616) !important;
+            height: 100vh;
+        }
+    </style>
+    <title>EMRgency</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Nunito"/>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<nav id='navbar-head' class="navbar nav navbar-expand-lg fixed-top">
+    <!-- <a class="navbar-brand" href="#"></a> -->
+    <a href="#welcome" class="navbar-left"><img src="http://localhost:8080/images/logo.png" height="37" width="200"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse navbar-right" id="navbarNavDropdown">
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" href="#signup">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#vision">Our Vision</a>
+            </li>
+            <form action="/form" method="get">
+                <li class="nav-item">
+                    <a class="nav-link" href="/form">Form</a>
+                </li>
+            </form>
+            <li>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Username" aria-label="Username">
+                <input class="form-control mr-sm-2" type="search" placeholder="Password" aria-label="Password">
+                <button class="btn btn-outline-primary" type="submit">Login</button>
+            </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div data-spy="scroll" data-target="#navbar-head" data-offset="0">
+    <div id='welcome' class="jumbotron jumbo jumbotron-fluid">
+        <div class="container">
+            <h2 class="display-4">EMRgency</h2>
+            <p class="lead">An open-source Electronic Health Record System for Developing Nations</p>
+        </div>
+    </div>
+    <div id='signup' class="jumbotron jumbo1 jumbotron-fluid">
+        <div class="container">
+            <h2 class="display-4">Please Sign Up</h2>
+            <p class="lead">It's free and always will be.</p>
+            <form>
+                <div class="form-group">
+                    <label for="InputEmail">Username</label>
+                    <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp"
+                           placeholder="Enter username">
+                    <label for="InputFName">First Name</label>
+                    <input type="text" class="form-control" id="InputFName" aria-describedby="emailHelp"
+                           placeholder="Enter first name">
+                    <label for="InputLName">Last Name</label>
+                    <input type="text" class="form-control" id="InputLName" aria-describedby="emailHelp"
+                           placeholder="Enter last name">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your information with anyone
+                        else.
+                    </small>
+                </div>
+                <button id="signupsubmit" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div id='about' class="jumbotron jumbo2 jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">About Us</h1>
+            <h3 class="display-5">Who We Are</h3>
+            <p class="lead">We are a team of passionate individuals that believe that self-actualization begins with
+                a comprehensive understanding of one's own mental health, especially over time. By empowering
+                individuals
+                and driving recommendations in the future, we believe we can leverage new cutting edge technology and
+                help improve the mental health industry of tomorrow. However, we are no means a substitute for actual
+                treatment, and you should take our recommendations with a grain of salt. Mental health is driven by
+                a near-infinte number of factors, and we recognize that our recommendations can never be 100% accurate.
+            </p>
+        </div>
+    </div>
+    <div id='vision' class="jumbotron jumbo3 jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Our Vision</h1>
+            <p class="lead">Our team has seen the effects of poor mental health firsthand, 
+              in our beloved friends, family, and other loved ones. Our motivation and goal
+              is to be able to offer an innovative service unlike any other, to help those struggling 
+              with resources, support, and guidance. Especially at the university of Pennsylvania, where
+              our team originates, we are seeking remedies for the often toxic and overtly success-driven 
+              society that we feel such crippling inadequacy. Give our product a spin, and hope you enjoy! 
+            </p>
+        </div>
+    </div>
+
+    <script>
+        $("#navbar-head ul li a[href^='#']").on('click', function (event) {
+            var target = this.hash;
+
+            event.preventDefault();
+
+            var navOffset = $('#navbar-head').height() - 45;
+
+            return $('html, body').animate({
+                scrollTop: $(this.hash).offset().top - navOffset
+
+            }, 300, function () {
+                return window.history.pushState(null, null, target);
+            });
+        });
+    </script>
+</body>
+</html>

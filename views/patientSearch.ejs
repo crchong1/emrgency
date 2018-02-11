@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .nav {
+          background-color:rgba(0,0,0,0.2) !important;
+          border-color: transparent !important;
+          background-image:none !important;
+          color:white !important;
+        }
+        .nav .btn {
+            background-color: rgba(255, 255, 255, 0) !important;
+            color: rgb(255, 255, 255);
+            border-color: rgba(255, 255, 255, 0.205)!important;
+        }
+        .nav li{
+          padding-left:30px;
+          padding-right:20px;
+        }
+        .nav a{
+          color:white !important;
+        }
+        .nav input{
+          background-color: rgba(255, 255, 255, 0.171);
+          border-color: transparent !important;
+        }
+        .nav ::placeholder {
+          color:white !important;
+        }
+        .jumbo {
+            color: rgba(255, 255, 255, 0.644);
+            background-color: rgba(255, 0, 0, 0.521) !important;
+            height: 50vh;
+        }
+
+        .jumbo h1 {
+            font-size: 7em !important;
+        }
+
+        .jumbo h2 {
+            font-size: 4em !important;
+            font-family: Pacifico;
+            padding-bottom: 30px;
+            padding-top: 0px;
+        }
+
+        .jumbo p {
+            font-size: 2em !important;
+        }
+        .jumbotron {
+            margin-bottom: 0rem !important;
+        }   
+    </style>
+    <title>Patient Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Pacifico"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body> 
+    <div id='welcome' class="jumbotron jumbo jumbotron-fluid">
+      <div class="container">
+        <h2 class="display-4">Search a Patient</h2>
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" id="search" class="form-control" name="patientName" placeholder="Search by name...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="searchButon" type="submit">Search!</button>
+                </span>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+        <!-- <button id='next' type="button" class="btn btn-info">Next Page</button>
+        <button id='prev' type="button" class="btn btn-info">Previous Page</button> -->
+      </div>
+    </div>
+<div class="container" id='patientCards'></div>
+<h1><%=message%></h1>
+<script>
+    var pageCounter = 0;
+    $(document).ready(function(){
+        $('#search').bind('input', function(){
+            var searchstring = $('#search').val();
+            $.ajax({
+                type: 'POST',
+                url: '/getPatientKeys',
+                data: {
+                    patientName: searchstring,
+                },
+                success: function(result) {
+                        //console.log(result.pokeData);
+                        updatePatientKeys(result.patientData);
+                  }
+            });
+        });
+    });
+    var updatePatientKeys = function(patient) {
+        console.log(patient);
+        var cards = "";
+        for(var i = 0; i < patient.length; i++) {
+            cards += '<div class="card" style="width: 28rem;">';
+                cards += '<div class="card-body">';
+                    cards += '<h5 class="card-title">' + patient.name + '</h5>';
+                    cards += '<h6 class="card-subtitle mb-2 text-muted">Given Name: '+patient.givenName+', '+patient.sex+'</h6>';
+                    cards += '<p class="card-text">';
+                        cards += 'Birthdate: ' + patient.birthdate + ', ';
+                        // CALCULATE AGE FROM BIRTHDATE HERE
+                        cards += 'Age: ' + age + ', ';
+                        cards += 'Height: ' + patient.height + ', ';
+                        cards += 'Weight: ' + patient.weight + ', ';
+                        cards += 'Father: ' + patient.father + ', ';
+                        cards += 'Mother: ' + patient.mother + ', ';
+                    cards += '</p>';
+                    cards += '<a href="/#'+ patient.id + '" class="card-link">Card link</a>';
+                cards += '</div>';
+            cards += '</div>';
+        }
+        document.getElementById('patientCards').innerHTML = cards;
+    };
+</script>
+</body>
+</html>

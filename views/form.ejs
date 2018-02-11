@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    .container {
+    font-family: Lato;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Create A Form</h1>
+  <p>Input Your Medical Data Here</p>
+  
+  <form action="/createaccount" method="post">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input type="text" class="form-control" name="username" placeholder="Enter a username">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+      <input type="password" class="form-control" name="password" placeholder="Enter a password">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon">> </span>
+      <input type="text" class="form-control" name="fullname" placeholder="Enter your first and last name">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-default">Create!</button>
+  </form>
+</div>    
+</body>
+</html>
