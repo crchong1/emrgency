@@ -86,7 +86,7 @@ var putPatient= function(patientJSON, route_callbck){
 };
 var getPatientKeys = function(patient_name, route_callbck){
     var key = new RegExp("^"+ patient_name);
-    Patient.find({name: key}, function(err, res){
+    Patient.find({lastName: key}, function(err, res){
         if(err){
             route_callback(null, "error" + err);
         }
