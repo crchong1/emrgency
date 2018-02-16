@@ -9,11 +9,6 @@ patients.once('open', function() {
 
 
 var generalPatient = mongoose.Schema({
-    //User information
-    name: {
-        type: String,
-        required: true,
-    },
     //Patient data
     id: {
         type: Number,
@@ -24,11 +19,11 @@ var generalPatient = mongoose.Schema({
         type: String,
         required: true,
     },
-    englishFirstName: {
+    firstName: {
         type: String,
         required: true,
     },
-    englishLastName:{
+    lastName:{
         type: String,
         required: true,
     },
@@ -71,11 +66,10 @@ var getPatient = function(patient_name, route_callbck){
   };
 var putPatient= function(patientJSON, route_callbck){
     var newPatient = new Patient({
-        name: patientJSON.name,
         id: patientJSON.id,
         givenName: patientJSON.givenName,
-        englishFirstName: patientJSON.englishFirstName,
-        englishLastName: patientJSON.englishLastName,
+        firstName: patientJSON.firstName,
+        lastName: patientJSON.lastName,
         sex: patientJSON.sex,
         birthdate: patientJSON.birthdate,
         height: patientJSON.height,
