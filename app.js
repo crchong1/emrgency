@@ -19,9 +19,10 @@ app.use(express.static('static'));
    POST is often used when submitting web forms ('method="post"'). */
 
 app.get('/', routes.get_main);
+app.get('/patientSearch', routes.get_patient_search);
 app.get('/form', routes.get_form);
 app.post('/form', routes.submit_patient);
-
+app.post('/getPatientKeys', routes.get_patient_keys);
 /* Run the server */
 console.log('Author: Connor Chong (conchong)');
 app.listen(8080);
