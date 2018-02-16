@@ -8,6 +8,25 @@ var getMain = function(req, res) {
 var getForm = function(req, res) {
 	res.render('form.ejs');
 }
+var submitPatient = function(req, res) {
+  console.log(req.body)
+  patientsDB.putPatient(req.body, function(data, err) {
+      if(err){
+console.log("error")
+      }
+      else if(data){
+          // console.log('success');
+          console.log(data);
+          res.send({
+              message: '',
+              patient: data
+          });
+      }
+      else {
+      }
+  })
+  res.render('form.ejs')
+}
 var getPatientKeys = function (req, res) {
   console.log('get patient: ' + req.body.patientName);
   // user signup
@@ -33,7 +52,9 @@ var getPatientKeys = function (req, res) {
 // this method handles the get_main request from app.js and reroutes it to the getMain function above
 var routes = { 
   get_main: getMain,
-  get_form:getForm
+  get_form:getForm,
+submit_patient: submitPatient
+
 };
 
 module.exports = routes;
