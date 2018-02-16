@@ -54,8 +54,7 @@
     <title>Patient Search</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Pacifico"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -68,7 +67,7 @@
         <h2 class="display-4">Search a Patient</h2>
         <div class="col-lg-6">
             <div class="input-group">
-                <input type="text" id="search" class="form-control" name="patientName" placeholder="Search by name...">
+                <input type="text" id="search" class="form-control" name="patientName" placeholder="Search by last name...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" id="searchButon" type="submit">Search!</button>
                 </span>
@@ -79,7 +78,6 @@
       </div>
     </div>
 <div class="container" id='patientCards'></div>
-<h1><%=message%></h1>
 <script>
     var pageCounter = 0;
     $(document).ready(function(){
@@ -89,33 +87,33 @@
                 type: 'POST',
                 url: '/getPatientKeys',
                 data: {
-                    patientName: searchstring,
+                    lastName: searchstring,
                 },
                 success: function(result) {
-                        //console.log(result.pokeData);
-                        updatePatientKeys(result.patientData);
+                        console.log(result.patient);
+                        console.log(result.patient);
+                        updatePatientKeys(result.patient);
                   }
             });
         });
     });
     var updatePatientKeys = function(patient) {
-        console.log(patient);
+        console.log('here:' + patient);
         var cards = "";
         for(var i = 0; i < patient.length; i++) {
             cards += '<div class="card" style="width: 28rem;">';
                 cards += '<div class="card-body">';
-                    cards += '<h5 class="card-title">' + patient.name + '</h5>';
-                    cards += '<h6 class="card-subtitle mb-2 text-muted">Given Name: '+patient.givenName+', '+patient.sex+'</h6>';
+                    cards += '<h5 class="card-title">' + patient[i].lastName + ', ' +  patient[i].firstName +  '</h5>';
+                    cards += '<h6 class="card-subtitle mb-2 text-muted">Given Name: '+patient[i].givenName+', '+ patient[i].sex+'</h6>';
                     cards += '<p class="card-text">';
-                        cards += 'Birthdate: ' + patient.birthdate + ', ';
+                        cards += 'Birthdate: ' + patient[i].birthdate + ', ';
                         // CALCULATE AGE FROM BIRTHDATE HERE
-                        cards += 'Age: ' + age + ', ';
-                        cards += 'Height: ' + patient.height + ', ';
-                        cards += 'Weight: ' + patient.weight + ', ';
-                        cards += 'Father: ' + patient.father + ', ';
-                        cards += 'Mother: ' + patient.mother + ', ';
+                        cards += 'Height: ' + patient[i].height + ', ';
+                        cards += 'Weight: ' + patient[i].weight + ', ';
+                        cards += 'Father: ' + patient[i].father + ', ';
+                        cards += 'Mother: ' + patient[i].mother + ', ';
                     cards += '</p>';
-                    cards += '<a href="/#'+ patient.id + '" class="card-link">Card link</a>';
+                    cards += '<a href="/#'+ patient[i].id + '" class="card-link">Card link</a>';
                 cards += '</div>';
             cards += '</div>';
         }
