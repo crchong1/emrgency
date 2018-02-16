@@ -8,8 +8,12 @@ var getMain = function(req, res) {
 var getForm = function(req, res) {
 	res.render('form.ejs');
 }
+
+var getSearchPatients = function(req, res) {
+  res.render('patientSearch.ejs');
+}
 var submitPatient = function(req, res) {
-  console.log(req.body)
+  console.log(req.body);
   patientsDB.putPatient(req.body, function(data, err) {
       if(err){
 console.log("error")
@@ -28,9 +32,9 @@ console.log("error")
   res.render('form.ejs')
 }
 var getPatientKeys = function (req, res) {
-  console.log('get patient: ' + req.body.patientName);
+  console.log('get patient: ' + req.body.lastName);
   // user signup
-  var patientName = req.body.patientName;
+  var patientName = req.body.lastName;
   patientName = patientName.toLowerCase();
   patientsDB.getPatientKeys(patientName, function(data, err){
       if(err){
@@ -53,8 +57,9 @@ var getPatientKeys = function (req, res) {
 var routes = { 
   get_main: getMain,
   get_form:getForm,
-submit_patient: submitPatient
-
+  submit_patient: submitPatient,
+  get_patient_keys: getPatientKeys,
+  get_patient_search: getSearchPatients
 };
 
 module.exports = routes;
