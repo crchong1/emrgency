@@ -13,7 +13,7 @@ var getPatientKeys = function (req, res) {
   // user signup
   var patientName = req.body.patientName;
   patientName = patientName.toLowerCase();
-  db.getPatientKeys(patientName, function(data, err){
+  patientsDB.getPatientKeys(patientName, function(data, err){
       if(err){
           res.render('pokemon.ejs', {message: 'Please enter a Pokemon'});
       }
