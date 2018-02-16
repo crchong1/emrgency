@@ -20,6 +20,8 @@ app.use(express.static('static'));
 
 app.get('/', routes.get_main);
 app.get('/form', routes.get_form);
+app.post('/form', routes.submit_patient);
+
 /* Run the server */
 console.log('Author: Connor Chong (conchong)');
 app.listen(8080);
