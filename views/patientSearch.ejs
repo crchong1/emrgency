@@ -243,13 +243,16 @@ crossorigin="anonymous"></script>
        var updatePatientKeys = function(patient) {
         console.log('here:' + patient);
         var cards = "";
+        var date = new Date(2018,2,12);
+
         for(var i = 0; i < patient.length; i++) {
-            cards += '<div class="card">';
-            cards += '<div class="card-body">';
-            cards += '<h5 class="card-title">' + patient[i].lastName + ', ' +  patient[i].firstName +  '</h5>';
-            cards += '<h6 class="card-subtitle mb-2 text-muted">Given Name: '+patient[i].givenName+', '+ patient[i].sex+'</h6>';
-            cards += '<p class="card-text">';
-            cards += 'Birthdate: ' + patient[i].birthdate + ', ';
+          cards += '<div class="card">';
+          cards += '<div class="card-body">';
+          cards += '<h5 class="card-title">' + patient[i].lastName + ', ' +  patient[i].firstName +  '</h5>';
+          cards += '<h6 class="card-subtitle mb-2 text-muted">Given Name: '+patient[i].givenName+', '+ patient[i].sex+'</h6>';
+          cards += '<p class="card-text">';
+          cards += 'Birthdate: ' + patient[i].birthdate + ', ';
+          cards += 'Age: ' + getAge(date) + ', ';
                         // CALCULATE AGE FROM BIRTHDATE HERE
                         cards += 'Height: ' + patient[i].height + ', ';
                         cards += 'Weight: ' + patient[i].weight + ', ';
@@ -259,59 +262,103 @@ crossorigin="anonymous"></script>
                         cards += '<a href="/#'+ patient[i].id + '" class="card-link">Card link</a>';
                         cards += '</div>';
                         cards += '</div>';
-                    }
-                    document.getElementById('patientCards').innerHTML = cards;
-                };
+                      }
+                      document.getElementById('patientCards').innerHTML = cards;
+                    };
 
-                var youngToOld = function(patient) {
-                    console.log(patient)
-                }
-                var aToZ = function(patient) {
-                    patient.sort(function(a, b){
-                     var elt1=a.lastName.toLowerCase(), elt2=b.lastName.toLowerCase()
+                    var youngToOld = function(patient) {
+                      console.log(patient);
+                    };
+                    var aToZ = function(patient) {
+                      patient.sort(function(a, b){
+                       var elt1=a.lastName.toLowerCase(), elt2=b.lastName.toLowerCase()
                     if (elt1 < elt2) //sort string ascending
-                        return -1
+                      return -1
                     if (elt1 > elt2)
                      return 1
                     return 0 //default return value (no sorting)
-                    });
-                    updatePatientKeys(patient);
-                }
-                var zToA = function(patient) {
-                    patient.sort(function(a, b){
-                     var elt1=a.lastName.toLowerCase(), elt2=b.lastName.toLowerCase()
+                  });
+                      updatePatientKeys(patient);
+                    };
+                    var zToA = function(patient) {
+                      patient.sort(function(a, b){
+                       var elt1=a.lastName.toLowerCase(), elt2=b.lastName.toLowerCase()
                     if (elt1 > elt2) //sort string descending
-                        return -1
+                      return -1
                     if (elt1 < elt2)
                      return 1
                     return 0 //default return value (no sorting)
-                     });
-                    updatePatientKeys(patient);
-                }
+                  });
+                      updatePatientKeys(patient);
+                    };
 
-                var loToHi = function(patient) {
-                    patient.sort(function(a, b){
-                     var elt1=a.id, elt2=b.id;
+                    var loToHi = function(patient) {
+                      patient.sort(function(a, b){
+                       var elt1=a.id, elt2=b.id;
                     if (elt1 < elt2) //sort string descending
-                        return -1
+                      return -1
                     if (elt1 > elt2)
                      return 1
                     return 0 //default return value (no sorting)
-                     });
-                    updatePatientKeys(patient);
-                }
+                  });
+                      updatePatientKeys(patient);
+                    };
 
-                 var hiToLo = function(patient) {
-                    patient.sort(function(a, b){
-                     var elt1=a.id, elt2=b.id;
+                    var hiToLo = function(patient) {
+                      patient.sort(function(a, b){
+                       var elt1=a.id, elt2=b.id;
                     if (elt1 > elt2) //sort string ascending
-                        return -1
+                      return -1
                     if (elt1 < elt2)
                      return 1
                     return 0 //default return value (no sorting)
-                     });
-                  updatePatientKeys(patient)
+                  });
+                      updatePatientKeys(patient)
+                    };
+
+                function getAge(fromdate, todate){
+                  if(todate) todate= new Date(todate);
+                  else todate= new Date();
+
+                  var age= [], fromdate= new Date(fromdate),
+                  y= [todate.getFullYear(), fromdate.getFullYear()],
+                  ydiff= y[0]-y[1],
+                  m= [todate.getMonth() + 1, fromdate.getMonth()],
+                  mdiff= m[0]-m[1],
+                  d= [todate.getDate(), fromdate.getDate()],
+                  ddiff= d[0]-d[1];
+                  
+                  if(mdiff < 0 || (mdiff=== 0 && ddiff<0))--ydiff;
+                  if(mdiff<0) mdiff+= 12;
+                  if(ddiff<0){
+                    fromdate.setMonth(m[1]+1, 0);
+                    ddiff= fromdate.getDate()-d[1]+d[0];
+                    --mdiff;
+                  }
+                  w = Math.floor(ddiff/7);
+                  ddiff = ddiff % 7;
+                  // 3 or older -> show year
+                  if (ydiff > 2) age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
+                  else if (ydiff> 0) {
+                    // Over a year -> show year and month
+                    age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
+                    if(mdiff> 0) age.push(mdiff+ ' month'+(mdiff> 1? 's':''));
+                    // Less than a year -> show month and day
+                  } else if (mdiff> 3) {
+                   age.push(mdiff+ ' month'+(mdiff> 1? 's':''));
+                   if (w> 0) age.push(w+ ' week' + (w> 1? 's':''));
+                 } else if (mdiff>0) {
+                  age.push(mdiff+ ' month'+(mdiff> 1? 's ':' '));
+                  if(w> 0) age.push(w+ ' week'+(w> 1? 's':''));
+                } else {
+                  if(w> 0) age.push(w+ ' week'+(w> 1? 's':''));
+                  if(ddiff> 0) age.push(ddiff+ ' day'+(ddiff> 1? 's':''));
                 }
+
+                if(age.length>1) age.splice(age.length-1,0,' and ');    
+                return age.join('');
+              }
+
 
 
             </script>
