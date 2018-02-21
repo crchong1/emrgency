@@ -31,7 +31,15 @@ var generalPatient = mongoose.Schema({
         type: String,
         required: true,
     },
-    birthdate: {
+    birthdateMonth: {
+        type: Number,
+        required: true,
+    },
+    birthdateDay: {
+        type: Number,
+        required: true,
+    },
+    birthdateYear: {
         type: Number,
         required: true,
     },
@@ -65,13 +73,16 @@ var getPatient = function(patient_name, route_callbck){
     });
   };
 var putPatient= function(patientJSON, route_callbck){
+    var dateNow = Date.now();
     var newPatient = new Patient({
-        id: patientJSON.id,
+        id: dateNow,
         givenName: patientJSON.givenName,
         firstName: patientJSON.firstName,
         lastName: patientJSON.lastName,
         sex: patientJSON.sex,
-        birthdate: patientJSON.birthdate,
+        birthdateMonth: patientJSON.birthdateMonth,
+        birthdateDay: patientJSON.birthdateDay,
+        birthdateYear:patientJSON.birthdateYear,
         height: patientJSON.height,
         weight: patientJSON.weight,
         father: patientJSON.father,
@@ -95,10 +106,11 @@ var getPatientKeys = function(patient_name, route_callbck){
         }
     });
 };
-var patientsDB = { 
+var patientsDB = {
     putPatient: putPatient,
     getPatient: getPatient,
     getPatientKeys: getPatientKeys
 };
 
 module.exports = patientsDB;
+
