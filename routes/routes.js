@@ -32,24 +32,22 @@ console.log("error")
   res.render('form.ejs')
 }
 var getPatientKeys = function (req, res) {
-  console.log('get patient: ' + req.body.lastName);
-  // user signup
-  var patientName = req.body.lastName;
-  patientName = patientName.toLowerCase();
-  patientsDB.getPatientKeys(patientName, function(data, err){
+  console.log('get patient: ' + req.body.search);
+  var search = req.body.search;
+  var field = req.body.field;
+  // patientName = patientName.toLowerCase();
+  patientsDB.getPatientKeys(search, field, function(data, err){
       if(err){
-          res.render('pokemon.ejs', {message: 'Please enter a Pokemon'});
+          alert("Error from getPatientKeys, patients DB, in routes.js -> getPatientKeys")
       }
       else if(data){
-          // console.log('success');
-          // console.log(data);
           res.send({
               message: '',
               patient: data
           });
       }
       else {
-          res.render('pokemon.ejs', {message: 'Pokemon does not exist'});
+          alert("No data or error in routes.js -> getPatientKeys")
       }
   });
 }
