@@ -20,6 +20,7 @@ app.use(express.static('static'));
 
 app.get('/', routes.get_main);
 app.get('/patientSearch', routes.get_patient_search);
+app.get('/patientPage', routes.get_patient_page);
 app.get('/form', routes.get_form);
 app.post('/form', routes.submit_patient);
 app.post('/getPatientKeys', routes.get_patient_keys);
