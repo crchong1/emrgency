@@ -12,6 +12,9 @@ var getForm = function(req, res) {
 var getSearchPatients = function(req, res) {
   res.render('patientSearch.ejs');
 }
+var getPatientPage = function(req, res) {
+  res.render('patientPage.ejs')
+}
 var submitPatient = function(req, res) {
   console.log(req.body);
   patientsDB.putPatient(req.body, function(data, err) {
@@ -56,6 +59,7 @@ var routes = {
   get_main: getMain,
   get_form:getForm,
   submit_patient: submitPatient,
+  get_patient_page: getPatientPage,
   get_patient_keys: getPatientKeys,
   get_patient_search: getSearchPatients
 };
