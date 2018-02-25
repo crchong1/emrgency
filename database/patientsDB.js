@@ -31,18 +31,10 @@ var generalPatient = mongoose.Schema({
         type: String,
         required: true,
     },
-    birthdateMonth: {
-        type: Number,
+     birthdate: {
+        type: Date,
         required: true,
-    },
-    birthdateDay: {
-        type: Number,
-        required: true,
-    },
-    birthdateYear: {
-        type: Number,
-        required: true,
-    },
+      },
     height: {
         type: Number,
         required: true
@@ -74,15 +66,14 @@ var getPatient = function(patient_name, route_callbck){
   };
 var putPatient= function(patientJSON, route_callbck){
     var dateNow = Date.now();
+    var dob = new Date(patientJSON.birthdateYear, patientJSON.birthdateMonth,patientJSON.birthdateDay);
     var newPatient = new Patient({
         id: dateNow,
         givenName: patientJSON.givenName,
         firstName: patientJSON.firstName,
         lastName: patientJSON.lastName,
         sex: patientJSON.sex,
-        birthdateMonth: patientJSON.birthdateMonth,
-        birthdateDay: patientJSON.birthdateDay,
-        birthdateYear:patientJSON.birthdateYear,
+        birthdate: dob,
         height: patientJSON.height,
         weight: patientJSON.weight,
         father: patientJSON.father,
