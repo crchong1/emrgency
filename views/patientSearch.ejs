@@ -1,63 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-    .filter {
-        padding: 1rem;
-    }
-    .btn {
-        padding: .1em ;
-        font-size: .5rem;
-    }
+  <style>
+  .filter {
+    padding: 1rem;
+  }
+  .btn {
+    padding: .1em ;
+    font-size: .5rem;
+  }
 
-    .sort {
-        padding: 1rem;
-    }
-    .nav {
-      background-color:rgba(0,0,0,0.2) !important;
-      border-color: transparent !important;
-      background-image:none !important;
-      color:white !important;
+  .sort {
+    padding: 1rem;
+  }
+  .nav {
+    background-color:rgba(0,0,0,0.2) !important;
+    border-color: transparent !important;
+    background-image:none !important;
+    color:white !important;
   }
   .nav .btn {
     background-color: rgba(255, 255, 255, 0) !important;
     color: rgb(255, 255, 255);
     border-color: rgba(255, 255, 255, 0.205)!important;
-}
-.nav li{
-  padding-left:30px;
-  padding-right:20px;
-}
-.nav a{
-  color:white !important;
-}
-.nav input{
-  background-color: rgba(255, 255, 255, 0.171);
-  border-color: transparent !important;
-}
-.nav ::placeholder {
-  color:white !important;
-}
-.jumbo {
+  }
+  .nav li{
+    padding-left:30px;
+    padding-right:20px;
+  }
+  .nav a{
+    color:white !important;
+  }
+  .nav input{
+    background-color: rgba(255, 255, 255, 0.171);
+    border-color: transparent !important;
+  }
+  .nav ::placeholder {
+    color:white !important;
+  }
+  .jumbo {
     color: rgba(255, 255, 255, 0.644);
-    background-color: rgba(255, 0, 0, 0.521) !important;
-}
+    background-color: #24345E !important;
+    padding-bottom: 1em !important;
+    padding-top: 2em !important;
+  }
 
-.jumbo h1 {
-    font-size: 7em !important;
-}
+  .search {
+    color: white;
+    font-weight: bold !important;
+  }
+  .search h2 {
+    font-size: 45px;
+  }
+  .search p {
+    color: #C7DDFF;
+    font-size: 15px;
+    line-height: 50px;
+    font-family: Nunito Sans;
+    display: inline-block;
+  }
+  .header {
+    display: inline-block;
+  }
+  .hdrBtns {
+    display: inline-block;
+    float:right;  }
+    .Rplus {
+      font-size: 48px;
+    }
+    .background {
+      background-color: #E1EBF2;
+    }
+    .patient {
+      margin: 20px;
+    }
+    .patient {
+      border-left: medium;
+      border-color: red;
+    }
+    .card-body {
+     border-left-style: solid;
+     border-left-color: #FF6363;
+     border-left-width: thick;
+   }
 
-.jumbo h2 {
-    font-size: 4em !important;
-    font-family: Pacifico;
-}
 
-.jumbo p {
-    font-size: 2em !important;
-}
-.jumbotron {
-    padding: 1rem !important;
-}   
+   .dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+  }
+  @media screen and (min-width: 768px) {
+    #adv-search {
+      width: 00px;
+      margin: 0 auto;
+    }
+    .dropdown.dropdown-lg {
+      position: static !important;
+    }
+    .dropdown.dropdown-lg .dropdown-menu {
+      min-width: 20%;
+    }
+  }
 </style>
 <title>Patient Search</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -72,81 +115,165 @@ crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 </head>
-<body> 
-    <div id='welcome' class="jumbotron jumbo jumbotron-fluid">
-      <div class="container">
-        <h2 class="display-4">Search a Patient</h2>
-        <div class="col-lg-6">
-          <div class="input-group">
-                <input type="text" id="firstNameSearch" class="form-control" name="patientFirstName" placeholder="Search by first name...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" id="searchButon" type="submit">Search!</button>
-                </span>
-            </div>
-            <div class="input-group">
-                <input type="text" id="lastNameSearch" class="form-control" name="patientLastName" placeholder="Search by last name...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" id="searchButon" type="submit">Search!</button>
-                </span>
-            </div>
-            <div class = "filter">
-                <h3> Filter </h3>
-                <div class="input-group">
-                  <input type="text" id="filterAge" class="form-control" name="filterAge" placeholder="Age...">
-                  <input type="text" id="filterHeight" class="form-control" name="filterHeight" placeholder="Height...">
-                  <input type="text" id="filterWeight" class="form-control" name="filterWeight" placeholder="Weight...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" id="filterWeightBtn" type="submit">Search!</button>
-                </span>
-            </div>
-            <!-- /input-group -->
-        </div>
-        <div class = "sort">
-            <h3> Sort </h3>
-    
+<body style="background-color: #E1EBF2" > 
+  <div class="background">
 
-        <div class="dropdown">
-            <input type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" value="Name Sort">
-            <ul id="nameSort" class="dropdown-menu">
-                <input type="hidden" id="admin_id" class="form-control">
-                <li id="1"><a href="#">A to Z</a></li>
-                <li id="2"><a href="#">Z to A</a></li>
-            </ul>
-        </div>
-        <div class="dropdown">
-            <input type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" value="Age Sort">
-            <ul id="ageSort" class="dropdown-menu" >
-                <li id="1"><a href="#">Youngest to Oldest</a></li>
-                <li id="2"><a href="#">Oldest to Youngest</a></li>
-                <li id="3"><a href="#">0 to 5</a></li>
-                <li id="4"><a href="#">5 to 10</a></li>
-                <li id="5"><a href="#">10 to 20</a></li>
+   <div class = "card header">
+     <div class = "topRight">
+      <p> Welcome, "User Name"  | </p>
+      <button> Logout </button>
+    </div>
 
-            </ul>
-        </div>
+    <div class = "Rplus header"> R+ Childrens </div>
 
-        <div class="dropdown">
-            <input type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" value="Patient ID Sort">
-            <ul id="idSort" class="dropdown-menu" >
-                <li id="1"><a href="#">Low to High</a></li>
-                <li id="2"><a href="#">High to Low</a></li>
-            </ul>
-        </div>
+    <div class = "hdrBtns header">
+     <a href="#Pharmacy">Pharmacy</a>
+     <a href="#AllPatients">All Patients</a>
+     <a href="#AddPatient">Add Patient</a>
+   </div>
+
+ </div>
+
+ <div id='welcome' class="search jumbo jumbotron jumbotron-fluid">
+  <div class="container">
+    <h2 class="search">Search Patients</h2>
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input type="text" id="search" class="form-control" name="search" placeholder="Search by name...">
+
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"> Search </span></button>
+        <div class="dropdown dropdown-lg">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+          <div class="dropdown-menu dropdown-menu-right" role="menu">
+            <form class="form-horizontal" role="form">
+              <div class="row">
+                <div class="col">
+
+                  <div class="form-group">
+                    <label for="filter">Filter by</label>
+                    <select class="form-control">
+                      <option value="0" selected>All patients</option>
+                      <option value="1">Age</option>
+                      <option value="2">Weight</option>
+                      <option value="3">Patient ID</option>
+                      <option value="4">Date of Birth</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="contain">Search Field: </label>
+                    <input class="form-control" type="text" />
+                  </div>
                 </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="contain"></label>
+                    <input class="form-control" type="text" />
+                  </div>
 
-    </div>
-</div><!-- /.col-lg-6 -->
-        <!-- <button id='next' type="button" class="btn btn-info">Next Page</button>
-            <button id='prev' type="button" class="btn btn-info">Previous Page</button> -->
+                  <div class="form-group">
+                    <label for="filter">Select Range</label>
+                    <select class="form-control">
+                      <option value="0" selected>All</option>
+                      <option value="1">Top 10th Percentile</option>
+                      <option value="2">Bottom 10th Percentile</option>
+                      <option value="3">Greater than > </option>
+                      <option value="4">Less than </option>
+                    </select>
+                  </div>
+
+
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
+
+
+        <div class="dropdown">
+          <input type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" value="Sort by: Last Name">
+          <ul id="nameSort" class="dropdown-menu">
+            <input type="hidden" id="admin_id" class="form-control">
+            <li id="1"><a href="#">Last Name</a></li>
+            <li id="2"><a href="#">First Name</a></li>
+            <li id="3"><a href="#">Age</a></li>
+            <li id="4"><a href="#">Center</a></li>
+
+          </ul>
+        </div>
+
+      </div>
+
     </div>
-    <div class="container" id='patientCards'></div>
 
-    <script>
-       var pageCounter = 0;
-       var patients;
+<br>
+    <!--
+    <div> 
+      <p> Can't find what you're looking for? Try </p>
+      <a href="#">Advanced Search</a>
+    </div>
+  -->
+</div>
+</div>
+<!--
+ <div id='welcome' class="search jumbo">
+  <div class="container">
+    <h2 class="search">Search Patients</h2>
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input type="text" id="firstNameSearch" class="form-control" name="patientFirstName" placeholder="Search by first name...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" id="searchButon" type="submit">Search!</button>
+        </span>
+      </div>
 
-       $(document).ready(function(){
+    </div>
+    
+  </div>
+  <div class = "sort">
+    <h3> Sort </h3>
+
+
+    <div class="dropdown">
+      <input type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" value="Name Sort">
+      <ul id="nameSort" class="dropdown-menu">
+        <input type="hidden" id="admin_id" class="form-control">
+        <li id="1"><a href="#">A to Z</a></li>
+        <li id="2"><a href="#">Z to A</a></li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <input type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" value="Age Sort">
+      <ul id="ageSort" class="dropdown-menu" >
+        <li id="1"><a href="#">Youngest to Oldest</a></li>
+        <li id="2"><a href="#">Oldest to Youngest</a></li>
+        <li id="3"><a href="#">0 to 5</a></li>
+        <li id="4"><a href="#">5 to 10</a></li>
+        <li id="5"><a href="#">10 to 20</a></li>
+
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <input type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" value="Patient ID Sort">
+      <ul id="idSort" class="dropdown-menu" >
+        <li id="1"><a href="#">Low to High</a></li>
+        <li id="2"><a href="#">High to Low</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+-->
+<!-- /.col-lg-6 -->
+        <!-- <button id='next' type="button" class="btn btn-info">Next Page</button>
+          <button id='prev' type="button" class="btn btn-info">Previous Page</button> -->
+          <div class="container" id='patientCards'></div>
+        </div>
+        <script>
+         var pageCounter = 0;
+         var patients;
+
+         $(document).ready(function(){
             // Initial Page Load
             /*
             $.ajax({
@@ -162,54 +289,56 @@ crossorigin="anonymous"></script>
                 }
             });
             */
+            $.ajax({
+              type: 'POST',
+              url: '/getPatientKeys',
+              data: {
+                search: '',
+                field: 'lastName',
+              },
+              success: function(result) {
+                patients = result.patient;
+                updatePatientKeys(result.patient);
+              }
+            });
+
+            // On Search
+            $('#search').bind('input', function(){
+              var searchstring = $('#search').val();
               $.ajax({
                 type: 'POST',
                 url: '/getPatientKeys',
                 data: {
-                    search: '',
-                    field: 'lastName',
+                  search: searchstring,
+                  field: 'lastName',
                 },
                 success: function(result) {
-                    patients = result.patient;
-                    updatePatientKeys(result.patient);
+                  patients = result.patient;
+                  console.log(patients)
+                  updatePatientKeys(result.patient);
                 }
+              });
             });
-
-            // On Search
-            $('#lastNameSearch').bind('input', function(){
-                var searchstring = $('#lastNameSearch').val();
-                $.ajax({
-                    type: 'POST',
-                    url: '/getPatientKeys',
-                    data: {
-                        search: searchstring,
-                        field: 'lastName',
-                    },
-                    success: function(result) {
-                        patients = result.patient;
-                        updatePatientKeys(result.patient);
-                    }
-                });
+            /*
+            $('#firstNameSearch').bind('input', function(){
+              var searchstring = $('#firstNameSearch').val();
+              $.ajax({
+                type: 'POST',
+                url: '/getPatientKeys',
+                data: {
+                  search: searchstring,
+                  field: 'firstName'
+                },
+                success: function(result) {
+                  patients = result.patient;
+                  updatePatientKeys(result.patient);
+                }
+              });
             });
-                        $('#firstNameSearch').bind('input', function(){
-                var searchstring = $('#firstNameSearch').val();
-                $.ajax({
-                    type: 'POST',
-                    url: '/getPatientKeys',
-                    data: {
-                        search: searchstring,
-                        field: 'firstName'
-                    },
-                    success: function(result) {
-                        patients = result.patient;
-                        updatePatientKeys(result.patient);
-                    }
-                });
-            });
-
+            */
             $(".dropdown-menu li a").click(function(){
               console.log(patients);
-              var selText = $(this).text();
+              var selText = 'Sort by: ' + $(this).text();
               $(this).parents('.dropdown').find('.dropdown-toggle').val(selText);
 
               var sortBy = $(this).parents('.dropdown-menu').get(0).id;
@@ -219,124 +348,124 @@ crossorigin="anonymous"></script>
                 if (val == 1) {
                  youngToOld(patients);
                  console.log(patients)
-             } else if (val == 2) {
+               } else if (val == 2) {
                 oldToYoung(patients);
-            } else if (val == 3) {
+              } else if (val == 3) {
                ageRange(patients);
-           } 
-       } else if (sortBy == 'nameSort') {
-           if (val == 1) {
+             } 
+           } else if (sortBy == 'nameSort') {
+             if (val == 1) {
                aToZ(patients);
+             } else if (val == 2) {
+              zToA(patients)
+            } 
+          } else if (sortBy == 'idSort') {
+            if (val == 1) {
+             loToHi(patients);
            } else if (val == 2) {
-            zToA(patients)
-        } 
-    } else if (sortBy == 'idSort') {
-        if (val == 1) {
-           loToHi(patients);
-       } else if (val == 2) {
-           hiToLo(patients)
-       } 
-   }
-});
+             hiToLo(patients)
+           } 
+         }
+       });
 
-        });
-       var updatePatientKeys = function(patient) {
-        console.log('here:' + patient);
-        var cards = "";
-        var date = new Date(2018,2,12);
+          });
+         var updatePatientKeys = function(patient) {
+          document.getElementById('patientCards').innerHTML = "";
 
-        for(var i = 0; i < patient.length; i++) {
-          cards += '<div class="card">';
-          cards += '<div class="card-body">';
-          cards += '<h5 class="card-title">' + patient[i].lastName + ', ' +  patient[i].firstName +  '</h5>';
-          cards += '<h6 class="card-subtitle mb-2 text-muted">Given Name: '+patient[i].givenName+', '+ patient[i].sex+'</h6>';
-          cards += '<p class="card-text">';
-          cards += 'Birthdate: ' + patient[i].birthdate + ', ';
-          cards += 'Age: ' + getAge(date) + ', ';
-                        // CALCULATE AGE FROM BIRTHDATE HERE
-                        cards += 'Height: ' + patient[i].height + ', ';
-                        cards += 'Weight: ' + patient[i].weight + ', ';
-                        cards += 'Father: ' + patient[i].father + ', ';
-                        cards += 'Mother: ' + patient[i].mother + ', ';
-                        cards += '</p>';
-                        cards += '<a href="/#'+ patient[i].id + '" class="card-link">Card link</a>';
-                        cards += '</div>';
-                        cards += '</div>';
-                      }
-                      document.getElementById('patientCards').innerHTML = cards;
-                    };
+          console.log('here:' + patient);
+          var cards = "";
+          var date = new Date(2018,2,12);
+          var contents = "";
+          for(var i = 0; i < patient.length; i++) {
 
-                    var youngToOld = function(patient) {
-                      console.log(patient);
-                    };
-                    var aToZ = function(patient) {
-                      patient.sort(function(a, b){
-                       var elt1=a.lastName.toLowerCase(), elt2=b.lastName.toLowerCase()
+            contents += '<div class="card patient"><div class="card-body">' + 
+            '<div class="row"> <div style="padding-left: 15px;"> <h5 class="card-title">' + patient[i].firstName + ' ' + patient[i].lastName +  '</h5> ' +
+            '</div><div class="col-sm-1" style="padding-right: 0;"> Sex: ' + 'F' + 
+            '</div><div class="col-sm-3"> Age: ' + getAge(date) +
+            '</div><div>DOB: ' + patient[i].birthdate + 
+            '</div></div>' + 
+
+            '<div class="row"> <div class="col-sm-2">' + 'Weight: ' + patient[i].weight + 
+            '</div><div class="col-sm-2">' + 'Height: ' + patient[i].height + ' cm' + 
+            '</div><div class="col-sm-5">' + 'Action required by: 3/12/18' + 
+            '</div><div class="col-sm-3">' + '<a href="patientPage" class="card-link">Go to Patient Page</a>' +
+            '</div> </div>' + 
+            '</div> </div>' ; 
+            document.getElementById('patientCards').innerHTML = contents;
+          }
+        };
+
+        var youngToOld = function(patient) {
+          console.log(patient);
+        };
+        var aToZ = function(patient) {
+          patient.sort(function(a, b){
+           var elt1=a.lastName.toLowerCase(), elt2=b.lastName.toLowerCase()
                     if (elt1 < elt2) //sort string ascending
                       return -1
                     if (elt1 > elt2)
                      return 1
                     return 0 //default return value (no sorting)
                   });
-                      updatePatientKeys(patient);
-                    };
-                    var zToA = function(patient) {
-                      patient.sort(function(a, b){
-                       var elt1=a.lastName.toLowerCase(), elt2=b.lastName.toLowerCase()
+          updatePatientKeys(patient);
+        };
+        var zToA = function(patient) {
+          patient.sort(function(a, b){
+           var elt1=a.lastName.toLowerCase(), elt2=b.lastName.toLowerCase()
                     if (elt1 > elt2) //sort string descending
                       return -1
                     if (elt1 < elt2)
                      return 1
                     return 0 //default return value (no sorting)
                   });
-                      updatePatientKeys(patient);
-                    };
+          updatePatientKeys(patient);
+        };
 
-                    var loToHi = function(patient) {
-                      patient.sort(function(a, b){
-                       var elt1=a.id, elt2=b.id;
+        var loToHi = function(patient) {
+          patient.sort(function(a, b){
+           var elt1=a.id, elt2=b.id;
                     if (elt1 < elt2) //sort string descending
                       return -1
                     if (elt1 > elt2)
                      return 1
                     return 0 //default return value (no sorting)
                   });
-                      updatePatientKeys(patient);
-                    };
+          updatePatientKeys(patient);
+        };
 
-                    var hiToLo = function(patient) {
-                      patient.sort(function(a, b){
-                       var elt1=a.id, elt2=b.id;
+        var hiToLo = function(patient) {
+          patient.sort(function(a, b){
+           var elt1=a.id, elt2=b.id;
                     if (elt1 > elt2) //sort string ascending
                       return -1
                     if (elt1 < elt2)
                      return 1
                     return 0 //default return value (no sorting)
                   });
-                      updatePatientKeys(patient)
-                    };
+          updatePatientKeys(patient)
+        };
 
-                function getAge(fromdate, todate){
-                  if(todate) todate= new Date(todate);
-                  else todate= new Date();
+        function getAge(fromdate, todate){
+          if(todate) todate= new Date(todate);
+          else todate= new Date();
 
-                  var age= [], fromdate= new Date(fromdate),
-                  y= [todate.getFullYear(), fromdate.getFullYear()],
-                  ydiff= y[0]-y[1],
-                  m= [todate.getMonth() + 1, fromdate.getMonth()],
-                  mdiff= m[0]-m[1],
-                  d= [todate.getDate(), fromdate.getDate()],
-                  ddiff= d[0]-d[1];
-                  
-                  if(mdiff < 0 || (mdiff=== 0 && ddiff<0))--ydiff;
-                  if(mdiff<0) mdiff+= 12;
-                  if(ddiff<0){
-                    fromdate.setMonth(m[1]+1, 0);
-                    ddiff= fromdate.getDate()-d[1]+d[0];
-                    --mdiff;
-                  }
-                  w = Math.floor(ddiff/7);
-                  ddiff = ddiff % 7;
+          var age= [], fromdate= new Date(fromdate),
+          y= [todate.getFullYear(), fromdate.getFullYear()],
+          ydiff= y[0]-y[1],
+          m= [todate.getMonth() + 1, fromdate.getMonth()],
+          mdiff= m[0]-m[1],
+          d= [todate.getDate(), fromdate.getDate()],
+          ddiff= d[0]-d[1];
+
+          if(mdiff < 0 || (mdiff=== 0 && ddiff<0))--ydiff;
+          if(mdiff<0) mdiff+= 12;
+          if(ddiff<0){
+            fromdate.setMonth(m[1]+1, 0);
+            ddiff= fromdate.getDate()-d[1]+d[0];
+            --mdiff;
+          }
+          w = Math.floor(ddiff/7);
+          ddiff = ddiff % 7;
                   // 3 or older -> show year
                   if (ydiff > 2) age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
                   else if (ydiff> 0) {
@@ -362,5 +491,6 @@ crossorigin="anonymous"></script>
 
 
             </script>
-        </body>
-        </html>
+          </body>
+          </html>
+

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .filter {
+    padding: 1rem;
+  }
+  .btn {
+    padding: .1em ;
+    font-size: .5rem;
+  }
+
+  .sort {
+    padding: 1rem;
+  }
+  .nav {
+    background-color:rgba(0,0,0,0.2) !important;
+    border-color: transparent !important;
+    background-image:none !important;
+    color:white !important;
+  }
+  .nav .btn {
+    background-color: rgba(255, 255, 255, 0) !important;
+    color: rgb(255, 255, 255);
+    border-color: rgba(255, 255, 255, 0.205)!important;
+  }
+  .nav li{
+    padding-left:30px;
+    padding-right:20px;
+  }
+  .nav a{
+    color:white !important;
+  }
+  .nav input{
+    background-color: rgba(255, 255, 255, 0.171);
+    border-color: transparent !important;
+  }
+  .nav ::placeholder {
+    color:white !important;
+  }
+  .jumbo {
+    color: rgba(255, 255, 255, 0.644);
+    background-color: #24345E !important;
+    padding-bottom: 1em !important;
+    padding-top: 2em !important;
+  }
+ 
+.search {
+  color: white;
+  font-weight: bold !important;
+}
+.search h2 {
+  font-size: 45px;
+}
+.search p {
+  color: #C7DDFF;
+  font-size: 15px;
+  line-height: 50px;
+  font-family: Nunito Sans;
+  display: inline-block;
+}
+.header {
+  display: inline-block;
+}
+.hdrBtns {
+  display: inline-block;
+  float:right;  }
+  .Rplus {
+    font-size: 48px;
+  }
+  .background {
+    background-color: #E1EBF2;
+  }
+  .patient {
+    margin: 20px;
+  }
+  .patient {
+    border-left: medium;
+    border-color: red;
+  }
+  .card-body {
+   border-left-style: solid;
+   border-left-color: #FF6363;
+   border-left-width: thick;
+ }
+
+
+ h1 {
+  text-align: center;
+  padding-top: 1em;
+  font-weight: bold;
+  font-size: 60px !important;
+
+ }
+
+ .card-text {
+  text-align: left;
+  margin: 0 !important;
+    margin-top: 1em !important;
+
+ }
+ .card-block {
+  padding: 20px;
+ }
+ .card {
+  background-color: #EDEDED !important;
+  margin: 5em;
+ }
+ .loginBtn {
+  font-size: 20px !important;
+  background-color: #24345E !important;
+  margin: 15px;
+  padding: 10px !important;
+ }
+
+
+</style>
+<title>Welcome!</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Pacifico"/>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+</head>
+<body style="background-color: #E1EBF2" > 
+  <div class="background">
+    <h1> Welcome to R+ </h1>
+<div class="row">
+<div class="card text-center col">
+  <div class="card-block">
+    <h4 class="card-title">Childrens Campus</h4>
+    <p class="card-text">Username: </p>
+     <div class="input-group">
+        <input type="text" id="username" class="form-control" name="username" placeholder="Username...">
+      </div>
+        <p class="card-text">Password: </p>
+             <div class="input-group">
+        <input type="text" id="password" class="form-control" name="password" placeholder="Password...">
+</div>
+    <button type="button" id="loginCC" class="btn btn-primary loginBtn">Login to Childrens Campus</button>
+    <!--
+    <form action="/form" method="get">
+                    <a class="btn btn-primary loginBtn" href="/form">Login to Childrens Campus</a>
+            </form> -->
+  </div>
+
+</div>
+
+
+<div class="card text-center col">
+  <div class="card-block">
+    <h4 class="card-title">El Rofi</h4>
+    <p class="card-text">Username: </p>
+     <div class="input-group">
+        <input type="text" id="username" class="form-control" name="username" placeholder="Username...">
+      </div>
+        <p class="card-text">Password: </p>
+             <div class="input-group">
+        <input type="text" id="password" class="form-control" name="password" placeholder="Password...">
+</div>
+    <a href="#" class="btn btn-primary loginBtn">Login to El Rofi</a>
+  </div>
+
+</div>
+</div>
+    <div style="text-align: center;">
+      <a href="#">Create an account</a>
+    </div>
+
+        </div>
+        <script>
+
+         $(document).ready(function(){
+         $('#loginCC').click(function(){
+          console.log("clicked");
+
+
+         });
+});
+
+            </script>
+          </body>
+          </html>
