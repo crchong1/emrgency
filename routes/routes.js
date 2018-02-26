@@ -15,6 +15,15 @@ var getSearchPatients = function(req, res) {
 var getPatientPage = function(req, res) {
   res.render('patientPage.ejs')
 }
+var getLoginPage = function(req, res) {
+  res.render('login.ejs')
+}
+var getAllergiesPage = function(req, res) {
+  res.render('allergies.ejs')
+}
+var getProblemList = function(req, res) {
+  res.render('problemList.ejs')
+}
 var submitPatient = function(req, res) {
   console.log(req.body);
   patientsDB.putPatient(req.body, function(data, err) {
@@ -56,10 +65,13 @@ var getPatientKeys = function (req, res) {
 }
 // this method handles the get_main request from app.js and reroutes it to the getMain function above
 var routes = { 
-  get_main: getMain,
+   get_main: getMain,
   get_form:getForm,
-  submit_patient: submitPatient,
   get_patient_page: getPatientPage,
+  get_login_page: getLoginPage,
+  get_problem_list: getProblemList,
+  get_allergies: getAllergiesPage,
+  submit_patient: submitPatient,
   get_patient_keys: getPatientKeys,
   get_patient_search: getSearchPatients
 };
